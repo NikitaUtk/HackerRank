@@ -23,9 +23,9 @@ class TCP {
         String [] states = {"CLOSED","LISTEN","SYN_RCVD","SYN_SENT",
                             "ESTABLISHED","FIN_WAIT_1","CLOSING",
                             "FIN_WAIT_2","TIME_WAIT","CLOSE_WAIT","LAST_ACK"};
-
-        HashMap<String, String> eventsMap = new HashMap<>();
-        eventsMap.put("APP_PASSIVE_OPEN", "LISTEN");
+//
+        HashMap<HashMap<String, String>, String> eventsMap = new HashMap<>();
+        eventsMap.put("CLOSED","APP_PASSIVE_OPEN", "LISTEN");
         eventsMap.put("APP_ACTIVE_OPEN", "SYN_SENT");
         eventsMap.put("RCV_SYN", "SYN_RCVD");
         eventsMap.put("APP_SEND", "SYN_SENT");
@@ -45,6 +45,11 @@ class TCP {
         eventsMap.put("APP_TIMEOUT", "CLOSED");
         eventsMap.put("APP_CLOSE", "LAST_ACK");
         eventsMap.put("RCV_ACK", "CLOSED");
+        for(String ev : events){
+            String event = ev;
+            eventsMap.get(ev);
+
+        }
 
         String state = "CLOSED";                        // initial state, always
         // Your code here!
